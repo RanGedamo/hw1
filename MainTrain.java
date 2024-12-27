@@ -1,10 +1,12 @@
 package test;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.Random;
 
-import test.TopicManagerSingleton.TopicManager;
+import test.src.Agent;
+import test.src.Message;
+import test.src.Topic;
+import test.src.TopicManagerSingleton;
+import test.src.TopicManagerSingleton.TopicManager;
 
 public class MainTrain { // simple tests to get you going...
 
@@ -29,7 +31,7 @@ public class MainTrain { // simple tests to get you going...
 
     }    
 
-    public static  abstract class AAgent implements Agent{
+    public static  abstract class AAgent implements Agent {
         public void reset() {}
         public void close() {}
         public String getName(){
@@ -41,7 +43,7 @@ public class MainTrain { // simple tests to get you going...
 
         double sum=0;
         int count=0;
-        TopicManager tm=TopicManagerSingleton.get();
+        TopicManager tm= TopicManagerSingleton.get();
 
         public TestAgent1(){
             tm.getTopic("Numbers").subscribe(this);

@@ -1,7 +1,4 @@
-package project_biu.graph;
-
-import java.util.ArrayList;
-import java.util.List;
+package test.src;
 
 public class Topic {
     public final String name;

@@ -1,4 +1,7 @@
 package test.src;
+// name: Ran Gedamo
+// ID : 205386626
+import java.io.UnsupportedEncodingException;
 
 import java.util.Date;
 
@@ -11,7 +14,7 @@ public class Message {
 
     public Message(byte[] data) {
         this.data = data;
-        this.asText = data.toString();
+        this.asText = tryToStringify(this.data);
         this.asDouble = tryParse(this.asText);
         this.date = new Date();
     }
@@ -24,14 +27,18 @@ public class Message {
         this(asText.getBytes());
     }
 
+    private String tryToStringify(byte[] bytes) {
+        try{
+            return new String(bytes, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            return e.getMessage();
+        }
+    }
     private double tryParse(String asText) {
         try {
             return Double.parseDouble(asText);
         }catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
             return Double.NaN;
         }
-
     }
-
 }
